@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "riscv-venus.variableFormat": "hex"
+=======
+    "riscv-venus.variableFormat": "decimal"
+>>>>>>> c53591977e5f80da7be8d9960149bb1504fd505e
 }
