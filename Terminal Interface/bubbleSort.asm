@@ -17,7 +17,7 @@ InnerLoop:
 
     slli t4, t2, 2 
     add t4, t0, t4     # Calculate address of array[t2]
-    lw t5, 0(t4)       # load array[t4] into 54
+    lw t5, 0(t4)       # load array[t4] into t5
     lw t6, -4(t4)      # load array[t4-1] into t6
 
     ble t6, t5, noswap  # If array[t4] > array[t4], no swap needed
@@ -52,7 +52,7 @@ print_loop:
     li a0, 1            #change output type to integer
     ecall               # Make syscall
 
-    li a0, 11           #change output to asciiz
+    li a0, 11           #change output to asciiz character
 
     li a1, ' '          #output space ' '
     ecall
@@ -62,7 +62,7 @@ print_loop:
 
 
 exit:
-    li a0, 11           #change output to asciiz
+    li a0, 11           #change output to asciiz character
     li a1, '\n'         #output newline
     ecall
     li a0, 10           # syscall for exit
