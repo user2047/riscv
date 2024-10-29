@@ -34,7 +34,7 @@ END2:
 
 #Begin While Statement
 
-li t0, x0           # Initialize count to 0
+li t0, 0           # Initialize count to 0
 li t1, 10           # Set loop exit to 10
 
 loop:

@@ -1,12 +1,13 @@
   .data
 array:  .word 10, 13, 96, 35, 26, 38, 32, 6, 85, 22, 7, 52, 42, 95, 19, 72
+# create predefined array with 16 values
 
 .text
 main:
-    la t0, array    #loads array into t1
+    la t0, array    # set t0 to point to the first element of the array
     li t1, 16       #loads size of array into t1
-    li s3, 0        #inits s3 to zero
-    li s5, 16       #loads size of array into s5
+    # li s3, 0        #inits s3 to zero
+    # li s5, 16       #loads size of array into s5
 
 OuterLoop:
     li t2, 15    # loads size of array -1 into t2
@@ -16,11 +17,11 @@ InnerLoop:
     beq t2, zero, EndOuterLoop  # If t2 == 0, end outer loop
 
     slli t4, t2, 2 
-    add t4, t0, t4     # Calculate address of array[t2]
+    add t4, t0, t4     # Calculate address of array[t4]
     lw t5, 0(t4)       # load array[t4] into t5
     lw t6, -4(t4)      # load array[t4-1] into t6
 
-    ble t6, t5, noswap  # If array[t4] > array[t4], no swap needed
+    ble t6, t5, noswap  # If t6 is less than or equal to t5 , no swap needed
 
 
     # Swap array[t4] and array[t4-1]
@@ -35,13 +36,14 @@ noswap:
 EndOuterLoop:
     beq t3, zero, end  # If no elements were swapped, array is sorted
     addi t1, t1, -1    # decrement size
-    bnez t1, OuterLoop
+    bnez t1, OuterLoop # branches to Outerloop if t1 is not == 0
 
 end:
 
 
 #                      # End of program
-li s3, 0               #init s3 to zero
+li s3, 0               # init s3 to zero
+li s5, 16              # init s5 to 16
 print_loop:
     beq s3, s5, exit   # If index == size, exit loop
     slli t4, s3, 2     # t4 = s3 * 4 (word size)
